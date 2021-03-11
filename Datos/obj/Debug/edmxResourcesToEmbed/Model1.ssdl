@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Asistencias">
+    <Key>
+      <PropertyRef Name="idAsistencia" />
+    </Key>
+    <Property Name="idAsistencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idEstudiante" Type="int" Nullable="false" />
+    <Property Name="idGrupo" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="idTipoAsistencia" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Carreras">
+    <Key>
+      <PropertyRef Name="idCarrera" />
+    </Key>
+    <Property Name="idCarrera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Codigo" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cursos">
+    <Key>
+      <PropertyRef Name="idCurso" />
+    </Key>
+    <Property Name="idCurso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="idCarrera" Type="int" Nullable="false" />
+    <Property Name="Codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Emails">
+    <Key>
+      <PropertyRef Name="idEmail" />
+    </Key>
+    <Property Name="idEmail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUsuario" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Consecutivo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Grupos">
+    <Key>
+      <PropertyRef Name="idGrupo" />
+    </Key>
+    <Property Name="idGrupo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProfesor" Type="int" Nullable="false" />
+    <Property Name="Numero" Type="int" Nullable="false" />
+    <Property Name="idCurso" Type="int" Nullable="false" />
+    <Property Name="idPeriodo" Type="int" Nullable="false" />
+    <Property Name="idHorario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Horarios">
+    <Key>
+      <PropertyRef Name="idHorario" />
+    </Key>
+    <Property Name="idHorario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dia" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="HoraInicio" Type="time" Precision="7" Nullable="false" />
+    <Property Name="HoraFinal" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LineasMatricula">
+    <Key>
+      <PropertyRef Name="idLineaMatricula" />
+    </Key>
+    <Property Name="idLineaMatricula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idMatricula" Type="int" Nullable="false" />
+    <Property Name="idGrupo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Matriculas">
+    <Key>
+      <PropertyRef Name="idMatricula" />
+    </Key>
+    <Property Name="idMatricula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idEstudiante" Type="int" Nullable="false" />
+    <Property Name="idTipoMatricula" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Periodos">
+    <Key>
+      <PropertyRef Name="idPeriodo" />
+    </Key>
+    <Property Name="idPeriodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Numero" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FechaInicio" Type="date" Nullable="false" />
+    <Property Name="FechaFinal" Type="date" Nullable="false" />
+    <Property Name="activo" Type="bit" Nullable="false" />
+    <Property Name="Año" Type="int" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Telefonos">
+    <Key>
+      <PropertyRef Name="idTelefono" />
+    </Key>
+    <Property Name="idTelefono" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUsuario" Type="int" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Consecutivo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoIdentificacion">
+    <Key>
+      <PropertyRef Name="idTipoIdentificacion" />
+    </Key>
+    <Property Name="idTipoIdentificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoMatricula">
+    <Key>
+      <PropertyRef Name="idTipoMatricula" />
+    </Key>
+    <Property Name="idTipoMatricula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposAsistencia">
+    <Key>
+      <PropertyRef Name="idTipoAsistencia" />
+    </Key>
+    <Property Name="idTipoAsistencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoUsuario">
+    <Key>
+      <PropertyRef Name="idTipoUsuario" />
+    </Key>
+    <Property Name="idTipoUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idTipoUsuario" Type="int" Nullable="false" />
+    <Property Name="idTipoIdentificacion" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellidos" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NumeroIdentificacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaNac" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_idCarrera">
+    <End Role="Carreras" Type="Self.Carreras" Multiplicity="1" />
+    <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carreras">
+        <PropertyRef Name="idCarrera" />
+      </Principal>
+      <Dependent Role="Cursos">
+        <PropertyRef Name="idCarrera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_idCurso">
+    <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
+    <End Role="Grupos" Type="Self.Grupos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cursos">
+        <PropertyRef Name="idCurso" />
+      </Principal>
+      <Dependent Role="Grupos">
+        <PropertyRef Name="idCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_idEstudiante">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Matriculas">
+        <PropertyRef Name="idEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_idEstudiantes">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Asistencias" Type="Self.Asistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Asistencias">
+        <PropertyRef Name="idEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_idGrupoLineasMatricula">
+    <End Role="Grupos" Type="Self.Grupos" Multiplicity="1" />
+    <End Role="LineasMatricula" Type="Self.LineasMatricula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupos">
+        <PropertyRef Name="idGrupo" />
+      </Principal>
+      <Dependent Role="LineasMatricula">
+        <PropertyRef Name="idGrupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_idGrupos">
+    <End Role="Grupos" Type="Self.Grupos" Multiplicity="1" />
+    <End Role="Asistencias" Type="Self.Asistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupos">
+        <PropertyRef Name="idGrupo" />
+      </Principal>
+      <Dependent Role="Asistencias">
+        <PropertyRef Name="idGrupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_idHorario">
+    <End Role="Horarios" Type="Self.Horarios" Multiplicity="1" />
+    <End Role="Grupos" Type="Self.Grupos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Horarios">
+        <PropertyRef Name="idHorario" />
+      </Principal>
+      <Dependent Role="Grupos">
+        <PropertyRef Name="idHorario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IDMatriculaID">
+    <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="1" />
+    <End Role="LineasMatricula" Type="Self.LineasMatricula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Matriculas">
+        <PropertyRef Name="idMatricula" />
+      </Principal>
+      <Dependent Role="LineasMatricula">
+        <PropertyRef Name="idMatricula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_idPeriodo">
+    <End Role="Periodos" Type="Self.Periodos" Multiplicity="1" />
+    <End Role="Grupos" Type="Self.Grupos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Periodos">
+        <PropertyRef Name="idPeriodo" />
+      </Principal>
+      <Dependent Role="Grupos">
+        <PropertyRef Name="idPeriodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_idProfesor">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Grupos" Type="Self.Grupos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Grupos">
+        <PropertyRef Name="idProfesor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_idTipoAsistencia">
+    <End Role="TiposAsistencia" Type="Self.TiposAsistencia" Multiplicity="1" />
+    <End Role="Asistencias" Type="Self.Asistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposAsistencia">
+        <PropertyRef Name="idTipoAsistencia" />
+      </Principal>
+      <Dependent Role="Asistencias">
+        <PropertyRef Name="idTipoAsistencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_idUsuario">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Telefonos" Type="Self.Telefonos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Telefonos">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_idUsuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Emails" Type="Self.Emails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Emails">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipoIdentificacion">
+    <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoIdentificacion">
+        <PropertyRef Name="idTipoIdentificacion" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="idTipoIdentificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipoMatriculaID">
+    <End Role="TipoMatricula" Type="Self.TipoMatricula" Multiplicity="1" />
+    <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoMatricula">
+        <PropertyRef Name="idTipoMatricula" />
+      </Principal>
+      <Dependent Role="Matriculas">
+        <PropertyRef Name="idTipoMatricula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipoUsuario">
+    <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoUsuario">
+        <PropertyRef Name="idTipoUsuario" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="idTipoUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="Asistencias" EntityType="Self.Asistencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carreras" EntityType="Self.Carreras" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Emails" EntityType="Self.Emails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grupos" EntityType="Self.Grupos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Horarios" EntityType="Self.Horarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LineasMatricula" EntityType="Self.LineasMatricula" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Matriculas" EntityType="Self.Matriculas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Periodos" EntityType="Self.Periodos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Telefonos" EntityType="Self.Telefonos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoIdentificacion" EntityType="Self.TipoIdentificacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoMatricula" EntityType="Self.TipoMatricula" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposAsistencia" EntityType="Self.TiposAsistencia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_idCarrera" Association="Self.FK_idCarrera">
+      <End Role="Carreras" EntitySet="Carreras" />
+      <End Role="Cursos" EntitySet="Cursos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_idCurso" Association="Self.FK_idCurso">
+      <End Role="Cursos" EntitySet="Cursos" />
+      <End Role="Grupos" EntitySet="Grupos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_idEstudiante" Association="Self.FK_idEstudiante">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Matriculas" EntitySet="Matriculas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_idEstudiantes" Association="Self.FK_idEstudiantes">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Asistencias" EntitySet="Asistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_idGrupoLineasMatricula" Association="Self.FK_idGrupoLineasMatricula">
+      <End Role="Grupos" EntitySet="Grupos" />
+      <End Role="LineasMatricula" EntitySet="LineasMatricula" />
+    </AssociationSet>
+    <AssociationSet Name="FK_idGrupos" Association="Self.FK_idGrupos">
+      <End Role="Grupos" EntitySet="Grupos" />
+      <End Role="Asistencias" EntitySet="Asistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_idHorario" Association="Self.FK_idHorario">
+      <End Role="Horarios" EntitySet="Horarios" />
+      <End Role="Grupos" EntitySet="Grupos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IDMatriculaID" Association="Self.FK_IDMatriculaID">
+      <End Role="Matriculas" EntitySet="Matriculas" />
+      <End Role="LineasMatricula" EntitySet="LineasMatricula" />
+    </AssociationSet>
+    <AssociationSet Name="FK_idPeriodo" Association="Self.FK_idPeriodo">
+      <End Role="Periodos" EntitySet="Periodos" />
+      <End Role="Grupos" EntitySet="Grupos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_idProfesor" Association="Self.FK_idProfesor">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Grupos" EntitySet="Grupos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_idTipoAsistencia" Association="Self.FK_idTipoAsistencia">
+      <End Role="TiposAsistencia" EntitySet="TiposAsistencia" />
+      <End Role="Asistencias" EntitySet="Asistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_idUsuario" Association="Self.FK_idUsuario">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Telefonos" EntitySet="Telefonos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_idUsuarios" Association="Self.FK_idUsuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Emails" EntitySet="Emails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipoIdentificacion" Association="Self.FK_TipoIdentificacion">
+      <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipoMatriculaID" Association="Self.FK_TipoMatriculaID">
+      <End Role="TipoMatricula" EntitySet="TipoMatricula" />
+      <End Role="Matriculas" EntitySet="Matriculas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipoUsuario" Association="Self.FK_TipoUsuario">
+      <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

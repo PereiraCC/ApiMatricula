@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="CatalogoEntities">
+    <EntitySetMapping Name="Asistencias">
+      <EntityTypeMapping TypeName="Model1.Asistencias">
+        <MappingFragment StoreEntitySet="Asistencias">
+          <ScalarProperty Name="idAsistencia" ColumnName="idAsistencia" />
+          <ScalarProperty Name="idEstudiante" ColumnName="idEstudiante" />
+          <ScalarProperty Name="idGrupo" ColumnName="idGrupo" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="idTipoAsistencia" ColumnName="idTipoAsistencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carreras">
+      <EntityTypeMapping TypeName="Model1.Carreras">
+        <MappingFragment StoreEntitySet="Carreras">
+          <ScalarProperty Name="idCarrera" ColumnName="idCarrera" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cursos">
+      <EntityTypeMapping TypeName="Model1.Cursos">
+        <MappingFragment StoreEntitySet="Cursos">
+          <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="idCarrera" ColumnName="idCarrera" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emails">
+      <EntityTypeMapping TypeName="Model1.Emails">
+        <MappingFragment StoreEntitySet="Emails">
+          <ScalarProperty Name="idEmail" ColumnName="idEmail" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grupos">
+      <EntityTypeMapping TypeName="Model1.Grupos">
+        <MappingFragment StoreEntitySet="Grupos">
+          <ScalarProperty Name="idGrupo" ColumnName="idGrupo" />
+          <ScalarProperty Name="idProfesor" ColumnName="idProfesor" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+          <ScalarProperty Name="idHorario" ColumnName="idHorario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Horarios">
+      <EntityTypeMapping TypeName="Model1.Horarios">
+        <MappingFragment StoreEntitySet="Horarios">
+          <ScalarProperty Name="idHorario" ColumnName="idHorario" />
+          <ScalarProperty Name="dia" ColumnName="dia" />
+          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+          <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LineasMatricula">
+      <EntityTypeMapping TypeName="Model1.LineasMatricula">
+        <MappingFragment StoreEntitySet="LineasMatricula">
+          <ScalarProperty Name="idLineaMatricula" ColumnName="idLineaMatricula" />
+          <ScalarProperty Name="idMatricula" ColumnName="idMatricula" />
+          <ScalarProperty Name="idGrupo" ColumnName="idGrupo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Matriculas">
+      <EntityTypeMapping TypeName="Model1.Matriculas">
+        <MappingFragment StoreEntitySet="Matriculas">
+          <ScalarProperty Name="idMatricula" ColumnName="idMatricula" />
+          <ScalarProperty Name="idEstudiante" ColumnName="idEstudiante" />
+          <ScalarProperty Name="idTipoMatricula" ColumnName="idTipoMatricula" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Periodos">
+      <EntityTypeMapping TypeName="Model1.Periodos">
+        <MappingFragment StoreEntitySet="Periodos">
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="Año" ColumnName="Año" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Telefonos">
+      <EntityTypeMapping TypeName="Model1.Telefonos">
+        <MappingFragment StoreEntitySet="Telefonos">
+          <ScalarProperty Name="idTelefono" ColumnName="idTelefono" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoIdentificacion">
+      <EntityTypeMapping TypeName="Model1.TipoIdentificacion">
+        <MappingFragment StoreEntitySet="TipoIdentificacion">
+          <ScalarProperty Name="idTipoIdentificacion" ColumnName="idTipoIdentificacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoMatricula">
+      <EntityTypeMapping TypeName="Model1.TipoMatricula">
+        <MappingFragment StoreEntitySet="TipoMatricula">
+          <ScalarProperty Name="idTipoMatricula" ColumnName="idTipoMatricula" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TiposAsistencia">
+      <EntityTypeMapping TypeName="Model1.TiposAsistencia">
+        <MappingFragment StoreEntitySet="TiposAsistencia">
+          <ScalarProperty Name="idTipoAsistencia" ColumnName="idTipoAsistencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoUsuario">
+      <EntityTypeMapping TypeName="Model1.TipoUsuario">
+        <MappingFragment StoreEntitySet="TipoUsuario">
+          <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="Model1.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
+          <ScalarProperty Name="idTipoIdentificacion" ColumnName="idTipoIdentificacion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="NumeroIdentificacion" ColumnName="NumeroIdentificacion" />
+          <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

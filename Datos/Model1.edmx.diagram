@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="abcc71725e594468868867b75392bfa1" Name="Diagram1">
+        <EntityTypeShape EntityType="Model1.Asistencias" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Carreras" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Cursos" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Emails" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Grupos" Width="1.5" PointX="8.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Horarios" Width="1.5" PointX="6" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.LineasMatricula" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Matriculas" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Periodos" Width="1.5" PointX="6" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Telefonos" Width="1.5" PointX="5.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.TipoIdentificacion" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.TipoMatricula" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.TiposAsistencia" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.TipoUsuario" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Usuarios" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="Model1.FK_idEstudiantes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_idGrupos" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_idTipoAsistencia" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_idCarrera" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_idCurso" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_idUsuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_idGrupoLineasMatricula" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_idHorario" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_idPeriodo" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_idProfesor" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_IDMatriculaID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_idEstudiante" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_TipoMatriculaID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_idUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_TipoIdentificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_TipoUsuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
