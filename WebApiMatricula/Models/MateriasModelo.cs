@@ -7,9 +7,9 @@ namespace WebApiMatricula.Models
 {
     public class MateriasModelo
     {
-        public string Curso { get; set; }
+        public string NombreCurso { get; set; }
 
-        public string Grupo { get; set; }
+        public string CodigoGrupo { get; set; }
 
         
     }

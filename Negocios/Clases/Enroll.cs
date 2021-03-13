@@ -41,13 +41,13 @@ namespace Negocios.Clases
 
                                 if (resp == 1)
                                 {
-                                    int idMatricula = matricula.ObtenerMatricula(idEstudiante, fecha);
+                                    int idMatricula = matricula.ObtenerIDMatricula(idEstudiante, fecha);
                                     if(idMatricula != 0)
                                     {
                                         foreach(string data in materias)
                                         {
                                             string[] temp = data.Split(',');
-                                            if (curso.ConsultarExisteCurso(Int32.Parse(temp[0])))
+                                            if (curso.ConsultarExisteCurso(temp[0]))
                                             {
                                                 if (grupo.ConsultarExisteGrupo(Int32.Parse(temp[1])))
                                                 {
@@ -107,6 +107,28 @@ namespace Negocios.Clases
             }
         }  
 
+        public List<Matriculas> obtenerMatriculas()
+        {
+            try
+            {
+                return matricula.ObtenerMatriculas();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
 
+        public List<LineasMatricula> obtenerLineasMatriculas(int idMatricula)
+        {
+            try
+            {
+                return matricula.ObtenerLineaMatricula(idMatricula);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

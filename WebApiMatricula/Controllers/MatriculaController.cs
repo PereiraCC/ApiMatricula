@@ -21,22 +21,28 @@ namespace WebApiMatricula.Controllers
         private MatriculaModel model = new MatriculaModel();
 
         // GET: api/Carreras
-        //public List<CarrerasModel> GetCarreras()
+        //public List<MatriculaModel> GetCarreras()
         //{
         //    try
         //    {
-        //        List<CarrerasModel> carreras = new List<CarrerasModel>();
-        //        List<Carreras> data = db.obtenerCarrera();
-        //        foreach (Carreras carrera in data)
+        //        List<MatriculaModel> matriculas = new List<MatriculaModel>();
+        //        List<Matriculas> data = db.obtenerMatriculas();
+        //        foreach (Matriculas matri in data)
         //        {
-        //            CarrerasModel temp = new CarrerasModel();
-        //            temp.Codigo = carrera.Codigo;
-        //            temp.Nombre = carrera.Nombre;
+        //            MatriculaModel temp = new MatriculaModel();
+        //            temp.FechaMatricula = matri.Fecha;
+        //            temp.Estudiante = temp.obtenerCedulaEstudiante(matri.idEstudiante);
+        //            List<LineasMatricula> lineas = db.obtenerLineasMatriculas(matri.idMatricula);
+        //            foreach (LineasMatricula lineaM in lineas)
+        //            {
+        //                List<MateriasModelo> 
+        //            }
+        //                temp.Materias = temp.
 
-        //            carreras.Add(temp);
+        //            matriculas.Add(temp);
         //        }
 
-        //        return carreras;
+        //        return matriculas;
         //    }
         //    catch (Exception ex)
         //    {
@@ -136,10 +142,10 @@ namespace WebApiMatricula.Controllers
         {
             try
             {
-                string data = validaciones.validarDatosMatricula(matricula.FechaMatricula, matricula.Estudiante, matricula.Carrera, matricula.Periodo, matricula.TipoMatricula);
+                string data = validaciones.validarDatosMatricula(matricula.FechaMatricula, matricula.Estudiante, matricula.NombreCarrera, matricula.Periodo, matricula.TipoMatricula);
                 if (data.Equals("1"))
                 {
-                    List<string> materias = model.obtenerMatriculas(matricula.Materias);
+                    List<string> materias = model.obtenerMaterias(matricula.Materias);
                     data = validaciones.validarDatosMaterias(materias);
                     if (data.Equals("1"))
                     {

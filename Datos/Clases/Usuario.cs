@@ -195,6 +195,31 @@ namespace Datos
             }
         }
 
+        public string CedulaEstudiante(int idEstudiante)
+        {
+            try
+            {
+                var query = from c in entities.Usuarios
+                            where c.idUsuario == idEstudiante && c.idTipoUsuario == 2
+                            select c;
+
+                List<Usuarios> usuario = query.ToList<Usuarios>();
+                foreach (Usuarios usu in usuario)
+                {
+                    if (usu.idUsuario == idEstudiante)
+                    {
+                        return usu.NumeroIdentificacion;
+                    }
+                }
+
+                return "No";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public int CrearUsuario(Usuarios usu)
         {
             try

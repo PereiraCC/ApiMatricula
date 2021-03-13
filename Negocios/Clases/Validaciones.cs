@@ -327,9 +327,13 @@ namespace Negocios.Clases
                 {
                     return "El datos son invalidos";
                 }
-                else if (!validarNumero(Estudiante) || !validarNumero(Carrera))
+                else if (!validarNumero(Estudiante))
                 {
-                    return "Los datos: cedula estudiante y codigo carrera no deben contener letras";
+                    return "Los datos: cedula estudiante no deben contener letras";
+                }
+                else if (!validarTexto(Carrera))
+                {
+                    return "Los datos: el nombre de la carrera no deben contener numeros";
                 }
                 else if (!validarTexto(TipoMatricula))
                 {
@@ -366,9 +370,13 @@ namespace Negocios.Clases
                     {
                         return "El datos son invalidos";
                     }
-                    else if (!validarNumero(temp[0]) || !validarNumero(temp[1]))
+                    else if (!validarNumero(temp[1]))
                     {
-                        return "Los datos: cedula estudiante y codigo carrera no deben contener letras";
+                        return "Los datos: codigo grupo no deben contener letras";
+                    }
+                    else if (!validarTexto(temp[0]))
+                    {
+                        return "Los datos: el nombre del curso no deben contener letras";
                     }
                 }
 

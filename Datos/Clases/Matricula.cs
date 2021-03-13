@@ -150,7 +150,7 @@ namespace Datos.Clases
             }
         }
 
-        public int ObtenerMatricula(int idEstudiante, DateTime fecha)
+        public int ObtenerIDMatricula(int idEstudiante, DateTime fecha)
         {
             try
             {
@@ -168,6 +168,39 @@ namespace Datos.Clases
                 }
 
                 return 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public List<Matriculas> ObtenerMatriculas()
+        {
+            try
+            {
+                var query = from c in entities.Matriculas
+                            select c;
+
+                return query.ToList<Matriculas>();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public List<LineasMatricula> ObtenerLineaMatricula(int idMatricula)
+        {
+            try
+            {
+                var query = from c in entities.LineasMatricula
+                            where c.idMatricula == idMatricula
+                            select c;
+
+                return query.ToList<LineasMatricula>();
             }
             catch (Exception ex)
             {
