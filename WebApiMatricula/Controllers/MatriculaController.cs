@@ -130,6 +130,7 @@ namespace WebApiMatricula.Controllers
         //}
 
         // POST: api/Carreras
+
         [ResponseType(typeof(Carreras))]
         public IHttpActionResult PostMatricula(MatriculaModel matricula)
         {
@@ -168,8 +169,7 @@ namespace WebApiMatricula.Controllers
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                return InternalServerError(ex);
             }
         }
 

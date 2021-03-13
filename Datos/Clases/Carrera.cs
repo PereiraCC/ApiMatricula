@@ -42,6 +42,32 @@ namespace Datos.Clases
             }
         }
 
+        public bool ConsultarExisteCarreraNombre(string nombre)
+        {
+            try
+            {
+                var query = from c in entities.Carreras
+                            where c.Nombre == nombre
+                            select c;
+
+                List<Carreras> curso = query.ToList<Carreras>();
+                if (curso.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public int IDCarreraExistente(string codigo)
         {
             try
@@ -54,6 +80,31 @@ namespace Datos.Clases
                 foreach (Carreras carrera in carreras)
                 {
                     if (carrera.Codigo == codigo)
+                    {
+                        return carrera.idCarrera;
+                    }
+                }
+
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int IDCarreraExistenteNombre(string nombre)
+        {
+            try
+            {
+                var query = from c in entities.Carreras
+                            where c.Nombre == nombre
+                            select c;
+
+                List<Carreras> carreras = query.ToList<Carreras>();
+                foreach (Carreras carrera in carreras)
+                {
+                    if (carrera.Nombre == nombre)
                     {
                         return carrera.idCarrera;
                     }
@@ -136,6 +187,33 @@ namespace Datos.Clases
                             select c;
 
                 return query.ToList<Carreras>();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public string obtenerNombreCarrera(int idcarrera)
+        {
+            try
+            {
+                var query = from c in entities.Carreras
+                            where c.idCarrera == idcarrera
+                            select c;
+
+                List<Carreras> carreras = query.ToList<Carreras>();
+
+                foreach(Carreras temp in carreras)
+                {
+                    if(temp.idCarrera == idcarrera)
+                    {
+                        return temp.Nombre;
+                    }
+                }
+
+                return "0";
 
             }
             catch (Exception ex)

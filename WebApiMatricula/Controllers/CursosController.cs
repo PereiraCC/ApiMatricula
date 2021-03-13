@@ -31,7 +31,7 @@ namespace WebApiMatricula.Controllers
                     CursosModel temp = new CursosModel();
                     temp.Codigo = curso.Codigo;
                     temp.Nombre = curso.Nombre;
-                    temp.CodigoCarrera = curso.idCarrera;
+                    temp.NombreCarrera = temp.obtenerNombreCarrera(curso.idCarrera);
 
                     cursos.Add(temp);
                 }
@@ -63,7 +63,7 @@ namespace WebApiMatricula.Controllers
                             CursosModel temp = new CursosModel();
                             temp.Codigo = curso.Codigo;
                             temp.Nombre = curso.Nombre;
-                            temp.CodigoCarrera = curso.idCarrera;
+                            temp.NombreCarrera = temp.obtenerNombreCarrera(curso.idCarrera);
 
                             cursos.Add(temp);
                         }
@@ -83,23 +83,23 @@ namespace WebApiMatricula.Controllers
             }
             catch(Exception ex)
             {
-                throw ex;
+                return InternalServerError(ex);
             }
         }
 
         // PUT: api/Cursos/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCursos(int id, Cursos cursos)
+        public IHttpActionResult PutCursos(int id, CursosModel cursos)
         {
             try
             {
                 string resp = validaciones.validarcodigo(id.ToString());
                 if (resp.Equals("1"))
                 {
-                    resp = validaciones.validarDatosCurso(cursos);
+                    resp = validaciones.validarDatosCurso(cursos.Codigo.ToString(), cursos.Nombre, cursos.NombreCarrera);
                     if (resp.Equals("1"))
                     {
-                        resp = db.modificarUsuario(id, cursos.Codigo, cursos.Nombre, cursos.idCarrera);
+                        resp = db.modificarCurso(id, cursos.Codigo, cursos.Nombre, cursos.NombreCarrera);
                         if (resp.Equals("1"))
                         {
                             return StatusCode(HttpStatusCode.NoContent);
@@ -126,20 +126,20 @@ namespace WebApiMatricula.Controllers
             }
             catch(Exception ex)
             {
-                throw ex;
+                return InternalServerError(ex);
             }
         }
 
         // POST: api/Cursos
         [ResponseType(typeof(Cursos))]
-        public IHttpActionResult PostCursos(Cursos cursos)
+        public IHttpActionResult PostCursos(CursosModel cursos)
         {
             try
             {
-                string data = validaciones.validarDatosCurso(cursos);
+                string data = validaciones.validarDatosCurso(cursos.Codigo.ToString(), cursos.Nombre, cursos.NombreCarrera);
                 if (data.Equals("1"))
                 {
-                    data = db.CrearCurso(cursos.Codigo, cursos.Nombre, cursos.idCarrera);
+                    data = db.CrearCurso(cursos.Codigo, cursos.Nombre, cursos.NombreCarrera);
                     if (data.Equals("1"))
                     {
                         return Created("DefaultApi", "Curso creado"); //201
@@ -164,8 +164,7 @@ namespace WebApiMatricula.Controllers
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                return InternalServerError(ex);
             }
         }
 
@@ -200,7 +199,7 @@ namespace WebApiMatricula.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return InternalServerError(ex);
             }
         }
 

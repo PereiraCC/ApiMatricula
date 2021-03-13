@@ -86,7 +86,7 @@ namespace WebApiMatricula.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return InternalServerError(ex);
             }
         }
 
@@ -129,7 +129,7 @@ namespace WebApiMatricula.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return InternalServerError(ex);
             }
         }
 
@@ -168,7 +168,7 @@ namespace WebApiMatricula.Controllers
             catch (Exception ex)
             {
 
-                throw ex;
+                return InternalServerError(ex);
             }
         }
 
@@ -203,7 +203,7 @@ namespace WebApiMatricula.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return InternalServerError(ex);
             }
         }
 

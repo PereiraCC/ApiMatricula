@@ -1,4 +1,5 @@
 ﻿using Datos;
+using Datos.Clases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,17 @@ namespace Negocios.Clases
     public class Courses
     {
         private Curso curso = new Curso();
+        private Carrera carrera = new Carrera();
 
-        public string CrearCurso(int codigo, string nombre, int idCarrera)
+        public string CrearCurso(int codigo, string nombre, string NombreCarrera)
         {
             try
             {
                 if (curso.ConsultarExisteCurso(codigo) == false)
                 {
-                    if (curso.ConsultarExisteCarrera(idCarrera))
+                    if (carrera.ConsultarExisteCarreraNombre(NombreCarrera))
                     {
+                        int idCarrera = carrera.IDCarreraExistenteNombre(NombreCarrera);
                         int resp = curso.CrearCurso(new Cursos()
                         {
                             Codigo = codigo,
@@ -127,13 +130,13 @@ namespace Negocios.Clases
             }
         }
 
-        public string modificarUsuario(int id, int codigo, string nombre, int idCarrera)
+        public string modificarCurso(int id, int codigo, string nombre, string nombreCarrera)
         {
             try
             {
                 if (curso.ConsultarExisteCurso(id))
                 {
-                    int resp = curso.ActualizarCurso(codigo, nombre, idCarrera);
+                    int resp = curso.ActualizarCurso(codigo, nombre, nombreCarrera);
                     if (resp == 1)
                     {
                         return "1";

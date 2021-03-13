@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Datos.Clases;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace Datos
     public class Curso
     {
         private CatalogoEntities entities;
+        private Carrera carrera;
 
         public Curso()
         {
             entities = new CatalogoEntities();
+            carrera = new Carrera();
         }
 
         public bool ConsultarExisteCurso(int codigo)
@@ -199,10 +202,11 @@ namespace Datos
             }
         }
 
-        public int ActualizarCurso(int codigo, string nombre, int idCarrera)
+        public int ActualizarCurso(int codigo, string nombre, string nombreCarrera)
         {
             try
             {
+                int idCarrera = carrera.IDCarreraExistenteNombre(nombreCarrera);
                 Cursos curso = entities.Cursos.First<Cursos>(x => x.Codigo == codigo);
                 curso.Nombre = nombre;
                 curso.idCarrera = idCarrera;
@@ -246,27 +250,6 @@ namespace Datos
                 throw ex;
             }
         }
-
-       
-
-        
-
-        //public List<Horarios> ObtenerHorariosdeCurso(int curso)
-        //{
-        //    try
-        //    {
-        //        var query = from temp in entities.Horarios
-        //                    where temp.idCurso == curso
-        //                    select temp;
-        //        return query.ToList<Horarios>();
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        throw ex;
-        //    }
-        //}
-
 
     }
 }

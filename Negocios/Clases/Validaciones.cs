@@ -148,29 +148,29 @@ namespace Negocios.Clases
             }
         }
 
-        public string validarDatosCurso(Cursos curso)
+        public string validarDatosCurso(string codigo, string curso, string carrera)
         {
             try
             {
-                if (curso.Codigo == 0 || vacioTexto(curso.Nombre) || curso.idCarrera == 0)
+                if (vacioTexto(codigo) || vacioTexto(curso) || vacioTexto(carrera))
                 {
                     return "El datos estan incompletos";
                 }
-                else if (validarKeyWords(curso.Codigo.ToString())|| validarKeyWords(curso.Nombre) || validarKeyWords(curso.idCarrera.ToString()))
+                else if (validarKeyWords(codigo)|| validarKeyWords(curso) || validarKeyWords(carrera))
                 {
                     return "El datos son invalidos";
                 }
-                else if (!validarNumero(curso.Codigo.ToString()))
+                else if (!validarNumero(codigo))
                 {
                     return "El codigo del curso deben contener solo numeros";
                 }
-                else if (!validarTexto(curso.Nombre))
+                else if (!validarTexto(curso))
                 {
                     return "El nombre del curso deben contener solo letras";
                 }
-                else if (!validarNumero(curso.idCarrera.ToString()))
+                else if (!validarTexto(carrera))
                 {
-                    return "El codigo del carrera es invalido";
+                    return "El nombre del carrera deben contener solo letras";
                 }
                 else
                 {
@@ -201,7 +201,7 @@ namespace Negocios.Clases
                 }
                 else if (!validarTexto(curso.Nombre))
                 {
-                    return "El nombre del curso deben contener solo letras";
+                    return "El nombre del carrera deben contener solo letras";
                 }
                 else
                 {
