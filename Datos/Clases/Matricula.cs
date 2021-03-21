@@ -94,6 +94,33 @@ namespace Datos.Clases
             }
         }
 
+        public string ConsultarNombreTipoMatricula(int idTipo)
+        {
+            try
+            {
+                var query = from c in entities.TipoMatricula
+                            where c.idTipoMatricula == idTipo
+                            select c;
+
+                List<TipoMatricula> tipos = query.ToList<TipoMatricula>();
+                foreach (TipoMatricula tipo in tipos)
+                {
+                    if (tipo.idTipoMatricula == idTipo)
+                    {
+                        return tipo.Descripcion;
+                    }
+                }
+
+                return "No";
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public int IDtipoMatricula(string nombre)
         {
             try

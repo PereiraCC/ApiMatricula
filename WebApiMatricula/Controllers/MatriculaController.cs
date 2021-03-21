@@ -21,34 +21,32 @@ namespace WebApiMatricula.Controllers
         private MatriculaModel model = new MatriculaModel();
 
         // GET: api/Carreras
-        //public List<MatriculaModel> GetCarreras()
-        //{
-        //    try
-        //    {
-        //        List<MatriculaModel> matriculas = new List<MatriculaModel>();
-        //        List<Matriculas> data = db.obtenerMatriculas();
-        //        foreach (Matriculas matri in data)
-        //        {
-        //            MatriculaModel temp = new MatriculaModel();
-        //            temp.FechaMatricula = matri.Fecha;
-        //            temp.Estudiante = temp.obtenerCedulaEstudiante(matri.idEstudiante);
-        //            List<LineasMatricula> lineas = db.obtenerLineasMatriculas(matri.idMatricula);
-        //            foreach (LineasMatricula lineaM in lineas)
-        //            {
-        //                List<MateriasModelo> 
-        //            }
-        //                temp.Materias = temp.
+        public List<MatriculaModel> GetMatricula()
+        {
+            try
+            {
+                List<MatriculaModel> matriculas = new List<MatriculaModel>();
+                List<Matriculas> data = db.obtenerMatriculas();
+                foreach (Matriculas matri in data)
+                {
+                    MatriculaModel temp = new MatriculaModel();
+                    temp.FechaMatricula = matri.Fecha;
+                    temp.Estudiante = temp.obtenerCedulaEstudiante(matri.idEstudiante);
+                    List<LineasMatricula> lineas = db.obtenerLineasMatriculas(matri.idMatricula);
+                    temp.Materias = temp.obtenerMaterias2(lineas);
+                    temp.NombreCarrera = temp.obtenerNombreCarrera(lineas);
+                    temp.Periodo = temp.obtenerPeriodo(lineas);
+                    temp.TipoMatricula = temp.obtenerTipoMatricula(matri.idTipoMatricula);
+                    matriculas.Add(temp);
+                }
 
-        //            matriculas.Add(temp);
-        //        }
-
-        //        return matriculas;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
+                return matriculas;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         //// GET: api/Carreras/5
         //[ResponseType(typeof(Carreras))]

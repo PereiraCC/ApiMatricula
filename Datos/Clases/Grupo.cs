@@ -195,6 +195,33 @@ namespace Datos.Clases
             }
         }
 
+        public Grupos obtenerGrupo(int idGrupo)
+        {
+            try
+            {
+                Grupos gr = new Grupos();
+                var query = from c in entities.Grupos
+                            where c.idGrupo == idGrupo
+                            select c;
+
+                List<Grupos> grupos = query.ToList<Grupos>();
+                foreach (Grupos grupo in grupos)
+                {
+                    if (grupo.idGrupo == idGrupo)
+                    {
+                        gr = grupo;
+                    }
+                }
+
+                return gr;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
     }
 }

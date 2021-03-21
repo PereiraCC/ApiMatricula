@@ -251,5 +251,30 @@ namespace Datos
             }
         }
 
+        public Cursos obtenerCurso(int idCurso)
+        {
+            try
+            {
+                Cursos curso = new Cursos();
+                var query = from c in entities.Cursos
+                            where c.idCurso == idCurso
+                            select c;
+
+                List<Cursos> cursos = query.ToList<Cursos>();
+                foreach(Cursos cur in cursos)
+                {
+                    if(cur.idCurso == idCurso)
+                    {
+                        curso = cur;
+                    }
+                }
+                return curso;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

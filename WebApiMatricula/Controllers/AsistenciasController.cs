@@ -20,10 +20,31 @@ namespace WebApiMatricula.Controllers
         private Validaciones validaciones = new Validaciones();
 
         // GET: api/Asistencias
-        //public IQueryable<Asistencias> GetAsistencias()
-        //{
-        //    return db.Asistencias;
-        //}
+        public List<AsistenciaModel> GetAsistencias()
+        {
+            try
+            {
+                List<AsistenciaModel> asistencias = new List<AsistenciaModel>();
+                List<Asistencias> data = db.obtenerAsistencias();
+                foreach (Asistencias asis in data)
+                {
+                    AsistenciaModel temp = new AsistenciaModel();
+                    temp.FechaAsistencia = asis.fecha;
+                    temp.Estudiante = temp.obtenerCedulaEstudiante(asis.idEstudiante);
+                    string[] tempG = temp.obtenerDataGrupo(asis.idGrupo).Split(',');
+                    temp.Grupo = tempG[0];
+                    temp.Curso = tempG[1];
+                    temp.TipoAsistencia = temp.obtenerNombreTipoAsistencia(asis.idTipoAsistencia);
+                    asistencias.Add(temp);
+                }
+
+                return asistencias;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         // GET: api/Asistencias/5
         //[ResponseType(typeof(Asistencias))]
@@ -39,39 +60,41 @@ namespace WebApiMatricula.Controllers
         //}
 
         // PUT: api/Asistencias/5
-        //[ResponseType(typeof(void))]
-        //public IHttpActionResult PutAsistencias(int id, Asistencias asistencias)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutAsistencias(string id, AsistenciaModel asistencias)
+        {
+            try
+            {
+                string data = validaciones.validarDatosAsistencia(asistencias.FechaAsistencia, asistencias.Estudiante, asistencias.Grupo, asistencias.Curso, asistencias.TipoAsistencia);
+                if (data.Equals("1"))
+                {
 
-        //    if (id != asistencias.idAsistencia)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    db.Entry(asistencias).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!AsistenciasExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
+                    data = db.ActualizarAsistencia(id, asistencias.Estudiante, Int32.Parse(asistencias.Grupo), Int32.Parse(asistencias.Curso), asistencias.TipoAsistencia, asistencias.FechaAsistencia);
+                    if (data.Equals("1"))
+                    {
+                        return StatusCode(HttpStatusCode.NoContent);//201
+                    }
+                    else if (data.Equals("Error el estudiante no existe") || data.Equals("Error el curso no existe")
+                        || data.Equals("Error el grupo no existe") || data.Equals("Error el tipo de asistencia no existe")
+                        || data.Equals("La asistencia no esta registrado"))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw new Exception(data);
+                    }
+                }
+                else
+                {
+                    throw new Exception(data);
+                }
+            }
+            catch(Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
 
         // POST: api/Asistencias
         [ResponseType(typeof(Asistencias))]

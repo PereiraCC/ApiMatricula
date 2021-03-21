@@ -81,5 +81,80 @@ namespace Negocios.Clases
                 throw ex;
             }
         }
+
+        public string ActualizarAsistencia(string id, string cedulaEstudiante, int numeroGrupo, int numeroCurso, string TipoAsistencia, DateTime Fecha)
+        {
+            try
+            {
+                if (usuario.ConsultarExisteEstudiante(id))
+                {
+                    int idEstudiante = usuario.IDUsuarioExistenteEstudiante(cedulaEstudiante);
+                    if (curso.ConsultarExisteCurso(numeroCurso))
+                    {
+                        if (grupo.ConsultarExisteGrupo(numeroGrupo))
+                        {
+                            int idGrupo = grupo.IDGrupoExistente(numeroGrupo);
+                            if (asistencia.ConsultarExisteTipoAsistencia(TipoAsistencia))
+                            {
+                                int idTipoAsistencia = asistencia.IDTipoAsistenciaExistente(TipoAsistencia);
+                                if (asistencia.ConsultarExisteAsistencia(idEstudiante, Fecha))
+                                {
+                                    int idAsistencia = asistencia.IDAsistenciaExistente(idEstudiante);
+
+                                    int resp = asistencia.ActualizarAsistencia(idAsistencia, idGrupo, idTipoAsistencia);
+
+                                    if (resp == 1)
+                                    {
+                                        return "1";
+                                    }
+                                    else
+                                    {
+                                        return "Error al modificar una asistencia";
+                                    }
+                                }
+                                else
+                                {
+                                    return "La asistencia no esta registrado"; //404
+                                }
+                            }
+                            else
+                            {
+                                return "Error el tipo de asistencia no existe"; //404
+                            }
+                        }
+                        else
+                        {
+                            return "Error el grupo no existe";
+                        }
+
+                    }
+                    else
+                    {
+                        return "Error el curso no existe"; //404
+                    } 
+
+                }
+                else
+                {
+                    return "Error el estudiante no existe"; //409
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Asistencias> obtenerAsistencias()
+        {
+            try
+            {
+                return asistencia.obtenerAsistencias();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
